@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grade Calculator</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    
+    <div class="container">
+        <h1>Grade Calculator</h1>
+
+    <form method="POST" action="/">
+    <table id="forms">
+        <tr>
+            <th>Assignment</th>
+            <th>Grade(%)</th>
+            <th>Weight(%)</th>
+        </tr>
+        
+        <tr>
+            <td name="assignments" id="assignments-0"><input name = "assignments" type="text"></td>
+            <td name="grades" id="grades-0"><input name="grades" type="number"></td>   
+            <td name="weights" id="weights-0"><input name="weights" type="number"></td>
+        </tr>
+
+        <tr>
+            <td name="assignments" id="assignments-1"><input name = "assignments" type="text"></td>
+            <td name="grades" id="grades-1"><input name = "grades" type="number"></td>   
+            <td name="weights" id="weights-1"><input name = "weights" type="number"></td>
+        </tr>
+        
+    </table>
+    <input class="submit-btn" type="submit" value="Calculate">
+    <button class="add-row" id="add-row" type="button">Add another Row</button>
+    </form>
+    </div>
+    <script>
+        window.onload = function() {
+            let addRowButton = document.getElementById('add-row');
+            addRowButton.addEventListener('click', function(e){
+                e.preventDefault();
+                let allFormsWrapper = document.getElementById('forms');
+                let allAssignmentsField = document.getElementsByName('assignments');
+                let allGradesField = document.getElementsByName('grades')
+                let allWeightsField = document.getElementsByName('weights')
+
+
+                let assignmentInputIds = [];
+                for (let i = 0; i < allAssignmentsField.length; i++) {
+                    assignmentInputIds.push(i)
+                }
+                
+                let gradeInputIds = [];
+                for (let i = 0; i < allGradesField.length; i++) {
+                    gradeInputIds.push(i)
+                }
+
+                let weightInputIds = [];
+                for (let i = 0; i < allWeightsField.length; i++) {
+                    weightInputIds.push(i)
+                }
+
+
+                let newAssignmentFieldName = `assignments-${Math.max(...assignmentInputIds)+1}`;
+                let newGradesFieldName = `grades-${Math.max(...gradeInputIds)+1}`;
+                let newWeightsFieldName = `weights-${Math.max(...weightInputIds)+1}`;
+                
+                let newField = `<tr><td id="${newAssignmentFieldName}" name="assignments"><input type="text" name="assignments"></td>
+                    <td id="${newGradesFieldName}" name="grades"><input type="text" name="grades"></td>
+                    <td id="${newWeightsFieldName}" name="weights"><input type="text" name="weights"></td></tr>`
+
+                allFormsWrapper.insertAdjacentHTML('beforeend', newField);
+
+            
+            });
+        }
+    </script>
+</body>
+</html>
