@@ -23,6 +23,6 @@ pip install -r requirements.txt
 
 ## ToDo
 
--[x] add new rows functionality
--[x] add results page
--[ ] add required grade to get a certain average feature
+- [x] add new rows functionality
+- [x] add results page
+- [ ] add required grade to get a certain average feature
