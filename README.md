@@ -21,6 +21,18 @@ source venv/Scripts/activate
 pip install -r requirements.txt
 ```
 
+4. Run the program
+
+```shell
+flask --debug run
+```
+
+or
+
+```shell
+flask run
+```
+
 ## ToDo
 
 - [x] add new rows functionality
