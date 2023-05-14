@@ -20,3 +20,9 @@ source venv/Scripts/activate
 ```shell
 pip install -r requirements.txt
 ```
+
+## ToDo
+
+-[x] add new rows functionality
+-[x] add results page
+-[ ] add required grade to get a certain average feature
