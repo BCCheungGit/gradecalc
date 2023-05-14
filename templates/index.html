@@ -5,11 +5,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='results.css') }}">
     <title>Final Grade</title>
 </head>
 <body>
+    <div class="container">
     <h1>Final Grade: {{ grade }}</h1>
     <h1>Letter Grade: {{ lettergrade }}</h1>
-    <a href="{{url_for('.home')}}">Go back</a>
+    <table class="results-table">
+        <tr>
+            <th>Assignment</th>
+            <th>Grade</th>
+            <th>Weight</th>
+        </tr>
+        
+            {% for i in range(0, assignments|length) %}
+            <tr>
+            <td>{{ assignments[i] }}</td>
+            <td>{{ grades[i] }}</td>
+            <td>{{ weights[i] }}</td>
+            </tr>
+            {%endfor%}
+
+
+    </table>
+    <br>
+    <a href="{{url_for('.home')}}">
+        <button class="submit-btn">Go back</button>
+    </a>
+
+</div>
 </body>
 </html>

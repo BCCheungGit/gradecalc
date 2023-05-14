@@ -10,6 +10,7 @@ def home():
     if request.method == 'POST': 
         grades = request.form.getlist("grades")
         weights = request.form.getlist("weights")
+        assignments = request.form.getlist("assignments")
         #print(grades)
         #print(weights)
         weightsum = 0
@@ -38,5 +39,5 @@ def home():
         else:
             letter = lettergrades[7]
 
-        return render_template('index.html', grade=finalgrade, lettergrade=letter)
+        return render_template('index.html', grade=finalgrade, lettergrade=letter, grades=grades, weights=weights, assignments=assignments)
     return render_template('home.html')
