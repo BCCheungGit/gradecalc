@@ -16,28 +16,36 @@ def home():
         weightsum = 0
         average = 0
         for i in range(0, len(grades)):
+            if grades[i] == '':
+                break
             weightsum += int(weights[i])
             average += int(grades[i]) * float((int(weights[i])/100))
         finalgrade = f'{(average / weightsum) * 100:.2f}'
+        
+
         lettergrades = ['A', 'A-', 'B', 'B-', 'C', 'C-', 'D', 'F']
         letter = 'F'
+        finalfloat = float(finalgrade)
 
-        if float(finalgrade) >=95:
+
+        if finalfloat >=95:
             letter = lettergrades[0]
-        elif float(finalgrade) >= 90:
+        elif finalfloat >= 90:
             letter = lettergrades[1]
-        elif float(finalgrade) >= 85:
+        elif finalfloat >= 85:
             letter = lettergrades[2]
-        elif float(finalgrade) >= 80:
+        elif finalfloat >= 80:
             letter = lettergrades[3]
-        elif float(finalgrade) >= 75:
+        elif finalfloat >= 75:
             letter = lettergrades[4]
-        elif float(finalgrade) >= 70:
+        elif finalfloat >= 70:
             letter = lettergrades[5]
-        elif float(finalgrade) >= 65: 
+        elif finalfloat >= 65: 
             letter = lettergrades[6]
         else:
             letter = lettergrades[7]
+
+
 
         return render_template('index.html', grade=finalgrade, lettergrade=letter, grades=grades, weights=weights, assignments=assignments)
     return render_template('home.html')
